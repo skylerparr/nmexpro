@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <project>
-  <ndll name="nmex" />
+    <section if="ios">
+        <dependency name="ndll/iPhone/libGoogleAdMobAds.a" />
+        <dependency name="ndll/iPhone/libGoogleAnalytics.a" />
+        <ios linker-flags="-v -fobjc-arc -ObjC"/>
+        <ndll name="nmex" />
+    </section>
 </project>

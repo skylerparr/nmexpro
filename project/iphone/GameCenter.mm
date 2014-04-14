@@ -27,7 +27,7 @@
 #include <ctype.h>
 #include "Events.h"
 
-namespace nme {
+namespace lime {
   void PauseAnimation();
   void ResumeAnimation();
 }
@@ -125,7 +125,7 @@ typedef void (*InviteFunctionType)(NSArray*);
   printf("matchmakerViewController wasCancelled!\n");
   [viewController dismissViewControllerAnimated:YES completion:nil];
 	[viewController release];
-  nme::ResumeAnimation();
+  lime::ResumeAnimation();
   onMatchmakingFinished(nil);
 }
 
@@ -134,7 +134,7 @@ typedef void (*InviteFunctionType)(NSArray*);
   printf("matchmakerViewController didFailWithError: %s\n", [[error localizedDescription] UTF8String]);
   [viewController dismissViewControllerAnimated:YES completion:nil];
 	[viewController release];
-  nme::ResumeAnimation();
+  lime::ResumeAnimation();
   onMatchmakingFinished(nil);
 }
 
@@ -143,7 +143,7 @@ typedef void (*InviteFunctionType)(NSArray*);
   printf("matchmakerViewController didFindMatch OK\n");
   [viewController dismissViewControllerAnimated:YES completion:nil];
   match.delegate = self;
-  nme::ResumeAnimation();
+  lime::ResumeAnimation();
   if ( match.expectedPlayerCount == 0 && [match.playerIDs count] != 0 ) {
     onMatchmakingFinished(match);
   } else {
@@ -181,7 +181,7 @@ typedef void (*InviteFunctionType)(NSArray*);
   printf("matchmakerViewController didFailWithError: %s\n", [[error localizedDescription] UTF8String]);
   [viewController dismissViewControllerAnimated:YES completion:nil];
 	[viewController release];
-  nme::ResumeAnimation();
+  lime::ResumeAnimation();
   onTurnBasedMatchmakingFinished(nil);
 }
 
@@ -190,7 +190,7 @@ typedef void (*InviteFunctionType)(NSArray*);
   printf("turnBasedMatchmakerViewController didFindMatch\n");
   [viewController dismissViewControllerAnimated:YES completion:nil];
 	[viewController release];
-  nme::ResumeAnimation();
+  lime::ResumeAnimation();
   onTurnBasedMatchmakingFinished(match);
 }
 
@@ -200,7 +200,7 @@ typedef void (*InviteFunctionType)(NSArray*);
   printf("turnBasedMatchmakerViewController playerQuitForMatch\n");
   [viewController dismissViewControllerAnimated:YES completion:nil];
 	[viewController release];
-  nme::ResumeAnimation();
+  lime::ResumeAnimation();
 }
 
 - (void)turnBasedMatchmakerViewControllerWasCancelled:(GKTurnBasedMatchmakerViewController *)viewController
@@ -208,7 +208,7 @@ typedef void (*InviteFunctionType)(NSArray*);
   printf("turnBasedMatchmakerViewControllerWasCancelled\n");
   [viewController dismissViewControllerAnimated:YES completion:nil];
 	[viewController release];
-  nme::ResumeAnimation();
+  lime::ResumeAnimation();
   onTurnBasedMatchmakingFinished(nil);
 }
 
@@ -237,7 +237,7 @@ typedef void (*InviteFunctionType)(NSArray*);
     [viewController dismissViewControllerAnimated:YES completion:nil];
   }
 	[viewController release];
-  nme::ResumeAnimation();
+  lime::ResumeAnimation();
 }
 
 @end
@@ -352,7 +352,7 @@ namespace nmeExtensions{
           GKMatchmakerViewController *mmvc = [[GKMatchmakerViewController alloc] initWithInvite:acceptedInvite];
           mmvc.matchmakerDelegate = ViewDelegate;
 
-          nme::PauseAnimation();
+          lime::PauseAnimation();
           UIWindow* window = [UIApplication sharedApplication].keyWindow;
           [[window rootViewController] presentModalViewController: mmvc animated:NO];
           [pool drain];
@@ -638,7 +638,7 @@ namespace nmeExtensions{
       mmvc.showExistingMatches = NO;
       mmvc.turnBasedMatchmakerDelegate = ViewDelegate;
 
-      nme::PauseAnimation();
+      lime::PauseAnimation();
       [[window rootViewController] presentModalViewController: mmvc animated:NO];
       [request release];
     }*/
@@ -673,7 +673,7 @@ namespace nmeExtensions{
       [friendRequestViewController addRecipientsWithPlayerIDs: identifiers];
     }
 
-    nme::PauseAnimation();
+    lime::PauseAnimation();
     UIWindow* window = [UIApplication sharedApplication].keyWindow;
     [[window rootViewController] presentModalViewController:friendRequestViewController animated:YES];
   }
@@ -1089,7 +1089,7 @@ namespace nmeExtensions{
     GKMatchmakerViewController *mmvc = [[GKMatchmakerViewController alloc] initWithMatchRequest:request];
     mmvc.matchmakerDelegate = ViewDelegate;
 
-    nme::PauseAnimation();
+    lime::PauseAnimation();
     [[window rootViewController] presentModalViewController: mmvc animated:NO];
     [pool drain];
   }

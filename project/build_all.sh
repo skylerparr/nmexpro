@@ -1,8 +1,8 @@
 #!/bin/sh
 
-haxelib run hxcpp Build.xml -Diphoneos
-haxelib run hxcpp Build.xml -Diphoneos -DHXCPP_ARMV7
-haxelib run hxcpp Build.xml -Diphonesim
+haxelib run hxcpp Build.xml -Diphoneos -DCLANG
+haxelib run hxcpp Build.xml -Diphoneos -DHXCPP_ARMV7 -DCLANG
+haxelib run hxcpp Build.xml -Diphonesim -DCLANG
 # haxelib run hxcpp Build.xml -Dandroid
 # haxelib run hxcpp Build.xml
 # haxelib run hxcpp Build.xml -DHXCPP_M64

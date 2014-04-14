@@ -21,13 +21,13 @@
   <file name="iPhone/Device.mm"/>
   <file name="iPhone/iRate.mm"/>
   <file name="iPhone/UI.mm"/>
-  <file name="iPhone/GA.mm"if="GOOGLE_LIBS" />
-  <file name="iPhone/GAD.mm"if="GOOGLE_LIBS" />
+  <file name="iPhone/GA.mm"  />
+  <file name="iPhone/GAD.mm"  />
   <file name="iPhone/GameCenter.mm"/>
   <file name="iPhone/InAppPurchase.mm"/>
   <file name="iPhone/Notifications.mm"/>
   <file name="iPhone/Audio.mm"/>
-  <compilerflag value="-DGOOGLE_LIBS" if="GOOGLE_LIBS" />
+<!--  <compilerflag value="-DGOOGLE_LIBS" if="GOOGLE_LIBS" />-->
 </files>
 
 <files id="common">

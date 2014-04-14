@@ -21,6 +21,10 @@ typedef wchar_t OSChar;
 typedef char OSChar;
 #define val_os_string val_string
 
+#ifndef NULL
+#define NULL 0
+#endif
+
 #endif
 
 AutoGCRoot *nmexEventHandle=0;
@@ -72,7 +76,8 @@ static value nmex_set_event_handle(value onEvent)
 }
 DEFINE_PRIM(nmex_set_event_handle,1);
 
-#ifdef GOOGLE_LIBS
+//#ifdef GOOGLE_LIBS
+
 
 /* AD
 *************************************************/
@@ -100,7 +105,7 @@ value nmex_ad_refresh(){
 }
 DEFINE_PRIM(nmex_ad_refresh,0);
 
-#endif
+//#endif
 
 /* Device
 **************************************************/

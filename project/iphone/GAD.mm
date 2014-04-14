@@ -1,6 +1,6 @@
 #include <AD.h>
 #import <UIKit/UIKit.h>
-#import "GADBannerView.h"
+#import "include/GADBannerView.h"
 
 
 namespace nmeExtensions {

@@ -74,7 +74,7 @@ namespace nmeExtensions {
   }
 
   void hxAudioSetAudioSessionCategory(int category) {
-    const NSString* avCat = AVAudioSessionCategoryAmbient;
+    NSString* avCat = AVAudioSessionCategoryAmbient;
     switch ( category ) {
     case 0: avCat = AVAudioSessionCategoryAmbient; break;
     case 1: avCat = AVAudioSessionCategorySoloAmbient; break;
