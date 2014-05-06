@@ -28,6 +28,7 @@ typedef char OSChar;
 #endif
 
 AutoGCRoot *nmexEventHandle=0;
+AutoGCRoot *nmexInterstitialCallback = 0;
 
 extern "C"{
 	void nme_extensions_main(){
@@ -65,6 +66,10 @@ extern "C"{
 		  
 		val_call1(nmexEventHandle->get(),o);
 	}
+    
+    void nme_extensions_interstitial_callback() {
+        val_call0(nmexInterstitialCallback->get());
+    }
 }
 
 /* init Event handle
@@ -104,6 +109,20 @@ value nmex_ad_refresh(){
 	return alloc_null();
 }
 DEFINE_PRIM(nmex_ad_refresh,0);
+
+value nmex_show_interstitial(value onComplete) {
+    nmexInterstitialCallback = new AutoGCRoot(onComplete);
+    showInterstitial();
+    return alloc_null();
+}
+DEFINE_PRIM(nmex_show_interstitial, 1);
+
+value nmex_init_interstitial(value id) {
+    initInterstitial(val_string(id));
+    return alloc_null();
+}
+DEFINE_PRIM(nmex_init_interstitial, 1);
+
 
 //#endif
 

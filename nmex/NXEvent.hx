@@ -1,6 +1,6 @@
 package nmex;
 
-import nme.events.Event;
+import flash.events.Event;
 
 class NXEvent extends Event{
 	

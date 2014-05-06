@@ -2,8 +2,9 @@
  *  2011-3-3 Yann
  *  please purchase a product every time.
  */
-package nmex; 
+package nmex;
 
+import flash.Lib;
 
 class InAppPurchase extends NXObject{
 	
@@ -42,10 +43,10 @@ class InAppPurchase extends NXObject{
 		instance = null;
 	}
 	
-	static var nmex_system_in_app_purchase_init = nme.Loader.load("nmex_system_in_app_purchase_init",0);
-	static var nmex_system_in_app_purchase_purchase = nme.Loader.load("nmex_system_in_app_purchase_purchase",1);
-	static var nmex_system_in_app_purchase_can_purchase = nme.Loader.load("nmex_system_in_app_purchase_can_purchase",0);
-	static var nmex_system_in_app_purchase_release = nme.Loader.load("nmex_system_in_app_purchase_release",0);
-  static var nmex_system_in_app_purchase_request_product_data = nme.Loader.load("nmex_system_in_app_purchase_request_product_data",1);
-  static var nmex_system_in_app_purchase_restore_purchases = nme.Loader.load("nmex_system_in_app_purchase_restore_purchases",0);
+	static var nmex_system_in_app_purchase_init = Lib.load("nmeExtensions","nmex_system_in_app_purchase_init",0);
+	static var nmex_system_in_app_purchase_purchase = Lib.load("nmeExtensions","nmex_system_in_app_purchase_purchase",1);
+	static var nmex_system_in_app_purchase_can_purchase = Lib.load("nmeExtensions","nmex_system_in_app_purchase_can_purchase",0);
+	static var nmex_system_in_app_purchase_release = Lib.load("nmeExtensions","nmex_system_in_app_purchase_release",0);
+  static var nmex_system_in_app_purchase_request_product_data = Lib.load("nmeExtensions","nmex_system_in_app_purchase_request_product_data",1);
+  static var nmex_system_in_app_purchase_restore_purchases = Lib.load("nmeExtensions","nmex_system_in_app_purchase_restore_purchases",0);
 }

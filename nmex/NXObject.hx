@@ -1,7 +1,8 @@
 package nmex;
 
-import nme.events.EventDispatcher;
-import nme.events.Event;
+import flash.events.EventDispatcher;
+import flash.events.Event;
+import flash.Lib;
 
 class NXObject extends EventDispatcher{
 	
@@ -86,6 +87,6 @@ class NXObject extends EventDispatcher{
 		
 	}
 	
-	static var nmex_set_event_handle = nme.Loader.load("nmex_set_event_handle",1);
+	static var nmex_set_event_handle = Lib.load("nmeExtensions","nmex_set_event_handle",1);
 	
 }
