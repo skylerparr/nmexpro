@@ -7,6 +7,9 @@ package nmex;
 
 import flash.Lib;
 
+#if android
+@:build( ShortCuts.mirrors( ) )
+#end
 class AD{
 	#if android
 	//android
@@ -31,7 +34,24 @@ class AD{
 		var a = new Array<Dynamic>();
 		_hideAd_func(a);
 	}
-	
+
+    #if android
+    @JNI("com.thoughtorigin.tictac.TicTacRumble.MainActivity", "showInterstitial")
+    #end
+    public static function showInterstitial(callbackObject: Dynamic, callbackFunc: String): Void {
+
+    }
+
+	private static var _initInterstitial_func:Dynamic;
+	public static function initInterstitial(id: String):Void{
+	    trace("haxe init interstitial");
+		if (_initInterstitial_func == null)
+			_initInterstitial_func = openfl.utils.JNI.createStaticMethod("com.thoughtorigin.tictac.TicTacRumble.MainActivity", "initInterstitial", "(Ljava/lang/String;)V", true);
+		var a = new Array<Dynamic>();
+		a.push(id);
+        _initInterstitial_func(a);
+	}
+
 	#elseif ios
 	// iphone
 	private static var running:Bool = false;
@@ -65,6 +85,12 @@ class AD{
 		if(isInit){
 			nmex_ad_refresh();
 		}
+	}
+
+	public static function showInterstitial(callbackObject: Dynamic, callbackFunc: String):Void{
+	}
+
+	public static function initInterstitial(id: String):Void{
 	}
 	
 	static var nmex_ad_init = Lib.load("nmeExtensions","nmex_ad_init",4);
