@@ -11,8 +11,8 @@ namespace nmeExtensions {
 	bool retinaInit = false;
     
 	const char *uniqueId(){
-		NSString *uid = [[UIDevice currentDevice] uniqueIdentifier];
-		return  [uid UTF8String];
+		//NSString *uid = [[UIDevice currentDevice] uniqueIdentifier];
+		return  "";
 	}
 	
 	const char *os(){
