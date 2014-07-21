@@ -44,11 +44,11 @@ namespace nmeExtensions {
 	UIViewController *root;
     static GADInterstitial *interstitial;
     UIViewController *interstitialRoot;
-    InterstitialDelegate *interstitalDelegate;
-    NSString *interstitalADID;
-    
+    InterstitialDelegate *interstitialDelegate;
+    NSString *interstitialADID;
+
 	void initAd(const char *ID,int x, int y, int sizeType=0){
-		
+
 		root = [[[UIApplication sharedApplication] keyWindow] rootViewController];
 		
 		NSString *GADID = [[NSString alloc] initWithUTF8String:ID];
@@ -59,7 +59,9 @@ namespace nmeExtensions {
         
 		
 		bannerView_.rootViewController = root;
-		[bannerView_ loadRequest:[GADRequest request]];
+		GADRequest *request = [GADRequest request];
+		request.testDevices = @[ @"3290f372d8fee0032979315b11246b46" ];
+		[bannerView_ loadRequest:request];
 	}
     
     void showAd(){
@@ -83,22 +85,24 @@ namespace nmeExtensions {
     }
     
     void initInterstitial(const char *ID) {
-        interstitalDelegate = [InterstitialDelegate alloc];
+        interstitialDelegate = [InterstitialDelegate alloc];
         
         interstitialRoot = [[[UIApplication sharedApplication] keyWindow] rootViewController];
-        interstitalADID = [[NSString alloc] initWithUTF8String:ID];
+        interstitialADID = [[NSString alloc] initWithUTF8String:ID];
         requestInterstitial();
     }
     
     void requestInterstitial() {
-        if(interstitial != nil) {
+        if(interstitial == nil) {
             [interstitial dealloc];
             interstitial = nil;
         }
         interstitial = [[GADInterstitial alloc] init];
-        
-        interstitial.adUnitID = interstitalADID;
-        interstitial.delegate = interstitalDelegate;
-        [interstitial loadRequest:[GADRequest request]];
+
+        interstitial.adUnitID = interstitialADID;
+        interstitial.delegate = interstitialDelegate;
+		GADRequest *request = [GADRequest request];
+		request.testDevices = @[ @"3290f372d8fee0032979315b11246b46" ];
+        [interstitial loadRequest:request];
     }
 }
